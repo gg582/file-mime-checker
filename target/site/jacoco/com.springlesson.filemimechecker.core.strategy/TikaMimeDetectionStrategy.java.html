@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TikaMimeDetectionStrategy.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">file-mime-checker</a> &gt; <a href="index.source.html" class="el_package">com.springlesson.filemimechecker.core.strategy</a> &gt; <span class="el_source">TikaMimeDetectionStrategy.java</span></div><h1>TikaMimeDetectionStrategy.java</h1><pre class="source lang-java linenums">package com.springlesson.filemimechecker.core.strategy;
+
+import org.apache.tika.Tika;
+
+/**
+ * Apache Tika 라이브러리를 이용해 MIME 타입을 판별하는 구체적인 전략 클래스입니다.
+ */
+<span class="fc" id="L8">public class TikaMimeDetectionStrategy implements MimeDetectionStrategy {</span>
+<span class="fc" id="L9">    private final Tika tika = new Tika();</span>
+
+    /**
+     * Tika를 사용하여 파일 내용 기반의 MIME 타입을 감지합니다.
+     * 데이터가 비어있을 경우 기본값인 'application/octet-stream'을 반환합니다.
+     */
+    @Override
+    public String detect(byte[] data) {
+<span class="nc bnc" id="L17" title="All 4 branches missed.">        if (data == null || data.length == 0) {</span>
+<span class="nc" id="L18">            return &quot;application/octet-stream&quot;; // 데이터가 없을 경우의 기본값</span>
+        }
+<span class="nc" id="L20">        return tika.detect(data);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>FileMimeCheckerApplication.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">file-mime-checker</a> &gt; <a href="index.source.html" class="el_package">com.springlesson.filemimechecker</a> &gt; <span class="el_source">FileMimeCheckerApplication.java</span></div><h1>FileMimeCheckerApplication.java</h1><pre class="source lang-java linenums">package com.springlesson.filemimechecker;
+
+import com.springlesson.filemimechecker.cli.CLIFileMimeController;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * File MIME Checker 애플리케이션의 메인 진입점 클래스입니다.
+ * 실행 시 인자로 전달되는 옵션을 분석하여 CLI 모드 또는 서버 모드로 애플리케이션을 구동합니다.
+ */
+@SpringBootApplication
+<span class="fc" id="L15">public class FileMimeCheckerApplication {</span>
+
+    public static void main(String[] args) throws Exception {
+<span class="nc" id="L18">        List&lt;String&gt; argList = Arrays.asList(args);</span>
+        
+        // '-d' 옵션이 주어지면 Spring Boot를 활용한 서버(REST API) 모드로 구동합니다.
+<span class="nc bnc" id="L21" title="All 2 branches missed.">        if (argList.contains(&quot;-d&quot;)) {</span>
+<span class="nc" id="L22">            System.out.println(&quot;서버 모드(REST API)로 시작합니다...&quot;);</span>
+<span class="nc" id="L23">            SpringApplication.run(FileMimeCheckerApplication.class, args);</span>
+        } else {
+            // '-d' 옵션이 없다면 CLI(Command Line Interface) 모드로 구동합니다.
+<span class="nc bnc" id="L26" title="All 2 branches missed.">            if (args.length == 0) {</span>
+<span class="nc" id="L27">                System.out.println(&quot;사용법: java -jar file-mime-checker.jar [-d] [파일1] [파일2] ...&quot;);</span>
+<span class="nc" id="L28">                System.out.println(&quot;  -d: 서버 모드로 실행 (REST API 지원)&quot;);</span>
+<span class="nc" id="L29">                System.out.println(&quot;  [파일1] [파일2] ...: MIME 타입을 확인할 파일 경로 (CLI 모드)&quot;);</span>
+<span class="nc" id="L30">                return;</span>
+            }
+
+<span class="nc" id="L33">            CLIFileMimeController controller = new CLIFileMimeController();</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">            for (String arg : args) {</span>
+<span class="nc bnc" id="L35" title="All 2 branches missed.">                if (arg.equals(&quot;-d&quot;)) continue;</span>
+                
+<span class="nc" id="L37">                String result = controller.CLIDetectFiletype(arg);</span>
+<span class="nc" id="L38">                System.out.println(&quot;파일: &quot; + arg);</span>
+<span class="nc" id="L39">                System.out.println(&quot;결과: &quot; + result);</span>
+<span class="nc" id="L40">                System.out.println(&quot;---------------------------------------------------&quot;);</span>
+            }
+        }
+<span class="nc" id="L43">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
