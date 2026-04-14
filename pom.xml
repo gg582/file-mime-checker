@@ -6,8 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>4.0.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
+        <relativePath/> </parent>
     <groupId>com.springlesson</groupId>
     <artifactId>file-mime-checker</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -58,7 +57,8 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.11</version> <executions>
+                <version>0.8.11</version>
+                <executions>
                     <execution>
                         <goals>
                             <goal>prepare-agent</goal>
@@ -72,7 +72,15 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>**/FileMimeCheckerApplication.class</exclude>
+                        <exclude>**/cli/*.class</exclude>
+                        <exclude>**/web/*.class</exclude>
+                    </excludes>
+                </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
