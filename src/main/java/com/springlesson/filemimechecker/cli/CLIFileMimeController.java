@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
- * 터미널 환경(CLI 모드)에서 파일 처리를 담당하는 컨트롤러입니다.
+ * 터미널 환경에서 파일 처리를 담당하는 컨트롤러입니다.
  */
 public class CLIFileMimeController {
 

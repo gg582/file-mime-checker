@@ -1,7 +1,7 @@
 package com.springlesson.filemimechecker.core.strategy;
 
 /**
- * MIME 타입 탐지 알고리즘을 캡슐화하기 위한 전략(Strategy) 인터페이스입니다.
+ * MIME 타입 탐지 알고리즘을 캡슐화하기 위한 전략 인터페이스입니다.
  * 전략 패턴을 적용하여, 탐지 방식이 변경되거나 추가될 때 기존 코드의 수정 없이 확장이 가능합니다.
  */
 public interface MimeDetectionStrategy {

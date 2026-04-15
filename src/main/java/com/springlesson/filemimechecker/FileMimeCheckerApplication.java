@@ -17,12 +17,12 @@ public class FileMimeCheckerApplication {
     public static void main(String[] args) throws Exception {
         List<String> argList = Arrays.asList(args);
         
-        // '-d' 옵션이 주어지면 Spring Boot를 활용한 서버(REST API) 모드로 구동합니다.
+        // '-d' 옵션이 주어지면 Spring Boot를 활용한 서버 모드로 구동합니다.
         if (argList.contains("-d")) {
             System.out.println("서버 모드(REST API)로 시작합니다...");
             SpringApplication.run(FileMimeCheckerApplication.class, args);
         } else {
-            // '-d' 옵션이 없다면 CLI(Command Line Interface) 모드로 구동합니다.
+            // '-d' 옵션이 없다면 CLI 모드로 구동합니다.
             if (args.length == 0) {
                 System.out.println("사용법: java -jar file-mime-checker.jar [-d] [파일1] [파일2] ...");
                 System.out.println("  -d: 서버 모드로 실행 (REST API 지원)");

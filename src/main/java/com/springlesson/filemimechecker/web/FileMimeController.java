@@ -28,7 +28,7 @@ public class FileMimeController {
         // Core 비즈니스 로직에 처리를 위임
         MimeDetectionResult result = fileMimeCore.process(data);
         
-        // 정해진 포맷(세미콜론 결합)의 결과를 HTTP Response로 반환
+        // 정해진 포맷의 결과를 HTTP Response로 반환
         return result.getFormattedResult();
     }
 }
