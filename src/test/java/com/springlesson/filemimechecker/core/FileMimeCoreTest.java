@@ -63,8 +63,9 @@ public class FileMimeCoreTest {
 
         MimeDetectionResult result = fileMimeCore.process(zipData);
 
-        assertEquals("text/plain", result.getFormattedResult());
-        assertEquals(1, result.getMimeTypes().size());
-        assertEquals("text/plain", result.getMimeTypes().get(0));
+        assertEquals("initial:application/zip;text/plain", result.getFormattedResult());
+        assertEquals(2, result.getMimeTypes().size());
+        assertEquals("initial:application/zip", result.getMimeTypes().get(0));
+        assertEquals("text/plain", result.getMimeTypes().get(1));
     }
 }

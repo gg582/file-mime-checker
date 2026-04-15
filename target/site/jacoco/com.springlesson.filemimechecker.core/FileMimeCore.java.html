@@ -50,17 +50,18 @@ public class FileMimeCore {
         
         // 파일이 ZIP 압축 파일인 경우 압축 해제 후 내부 파일 순회
 <span class="pc bpc" id="L52" title="1 of 4 branches missed.">        if (&quot;application/zip&quot;.equals(initialMime) || &quot;application/x-zip-compressed&quot;.equals(initialMime)) {</span>
-<span class="fc" id="L53">            List&lt;byte[]&gt; unzipped = uncompressZippedByte(data);</span>
-<span class="fc bfc" id="L54" title="All 2 branches covered.">            for (byte[] fileBytes : unzipped) {</span>
+<span class="fc" id="L53">            builder.addMimeType(&quot;initial:&quot; + initialMime);</span>
+<span class="fc" id="L54">            List&lt;byte[]&gt; unzipped = uncompressZippedByte(data);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            for (byte[] fileBytes : unzipped) {</span>
                 // 내부 파일 각각에 대해 탐지 전략을 호출하여 빌더에 추가
-<span class="fc" id="L56">                builder.addMimeType(strategy.detect(fileBytes));</span>
-<span class="fc" id="L57">            }</span>
-<span class="fc" id="L58">        } else {</span>
+<span class="fc" id="L57">                builder.addMimeType(strategy.detect(fileBytes));</span>
+<span class="fc" id="L58">            }</span>
+<span class="fc" id="L59">        } else {</span>
             // 단일 파일인 경우 그대로 추가
-<span class="fc" id="L60">            builder.addMimeType(initialMime);</span>
+<span class="fc" id="L61">            builder.addMimeType(initialMime);</span>
         }
         
-<span class="fc" id="L63">        return builder.build();</span>
+<span class="fc" id="L64">        return builder.build();</span>
     }
 
     /**
@@ -70,32 +71,32 @@ public class FileMimeCore {
      * @return 압축 해제된 개별 파일의 바이트 데이터 리스트
      */
     public List&lt;byte[]&gt; uncompressZippedByte(byte[] zipData) throws IOException {
-<span class="fc" id="L73">        List&lt;byte[]&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L74">        List&lt;byte[]&gt; result = new ArrayList&lt;&gt;();</span>
 
-<span class="fc" id="L75">        ByteArrayInputStream bais = new ByteArrayInputStream(zipData);</span>
-<span class="fc" id="L76">        ZipInputStream zis = new ZipInputStream(bais);</span>
+<span class="fc" id="L76">        ByteArrayInputStream bais = new ByteArrayInputStream(zipData);</span>
+<span class="fc" id="L77">        ZipInputStream zis = new ZipInputStream(bais);</span>
 
         ZipEntry entry;
-<span class="fc" id="L79">        byte[] buffer = new byte[8192];</span>
+<span class="fc" id="L80">        byte[] buffer = new byte[8192];</span>
 
         // ZIP 파일 내부의 엔트리(파일)를 하나씩 읽어들임
-<span class="fc bfc" id="L82" title="All 2 branches covered.">        while ((entry = zis.getNextEntry()) != null) {</span>
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        while ((entry = zis.getNextEntry()) != null) {</span>
             // 폴더는 무시
-<span class="pc bpc" id="L84" title="1 of 2 branches missed.">            if (entry.isDirectory()) {</span>
-<span class="nc" id="L85">                zis.closeEntry();</span>
-<span class="nc" id="L86">                continue;</span>
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">            if (entry.isDirectory()) {</span>
+<span class="nc" id="L86">                zis.closeEntry();</span>
+<span class="nc" id="L87">                continue;</span>
             }
 
-<span class="fc" id="L89">            ByteArrayOutputStream baos = new ByteArrayOutputStream();</span>
+<span class="fc" id="L90">            ByteArrayOutputStream baos = new ByteArrayOutputStream();</span>
             int read;
-<span class="fc bfc" id="L91" title="All 2 branches covered.">            while ((read = zis.read(buffer)) != -1) {</span>
-<span class="fc" id="L92">                baos.write(buffer, 0, read);</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            while ((read = zis.read(buffer)) != -1) {</span>
+<span class="fc" id="L93">                baos.write(buffer, 0, read);</span>
             }
-<span class="fc" id="L94">            result.add(baos.toByteArray());</span>
-<span class="fc" id="L95">            zis.closeEntry();</span>
-<span class="fc" id="L96">        }</span>
-<span class="fc" id="L97">        zis.close();</span>
-<span class="fc" id="L98">        return result;</span>
+<span class="fc" id="L95">            result.add(baos.toByteArray());</span>
+<span class="fc" id="L96">            zis.closeEntry();</span>
+<span class="fc" id="L97">        }</span>
+<span class="fc" id="L98">        zis.close();</span>
+<span class="fc" id="L99">        return result;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
