@@ -50,6 +50,7 @@ public class FileMimeCore {
         
         // 파일이 ZIP 압축 파일인 경우 압축 해제 후 내부 파일 순회
         if ("application/zip".equals(initialMime) || "application/x-zip-compressed".equals(initialMime)) {
+            builder.addMimeType("initial:"+ initialMime);
             List<byte[]> unzipped = uncompressZippedByte(data);
             for (byte[] fileBytes : unzipped) {
                 // 내부 파일 각각에 대해 탐지 전략을 호출하여 빌더에 추가
