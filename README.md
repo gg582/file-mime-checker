@@ -13,8 +13,10 @@ Apache Tika 라이브러리를 활용하여 정확한 파일 타입을 감지하
 ## 프로젝트 빌드 방법
 
 터미널에서 Maven Wrapper를 사용하여 패키징을 진행합니다.
-bash
+
+```bash
 ./mvnw clean package
+```
 
 빌드가 완료되면 target/ 디렉토리에 실행 가능한 jar 파일이 생성됩니다.
 
@@ -22,13 +24,16 @@ bash
 
 ### 1. CLI 모드 (터미널 직접 확인)
 
+```bash
 java -jar target/file-mime-checker-0.0.1-SNAPSHOT.jar [파일경로1] [파일경로2] ...
-
+```
 
 ### 2. 서버 모드 (REST API로 구동)
 애플리케이션을 데몬(서버) 형태로 띄우려면 -d 옵션을 추가합니다.
 
+```bash
 java -jar target/file-mime-checker-0.0.1-SNAPSHOT.jar -d
+```
 
 서버가 구동된 후, http://localhost:8080/upload URL을 통해 POST 방식으로 multipart/form-data 형식의 file 파라미터를 전송하면 MIME 타입 결과를 반환받을 수 있습니다.
 
