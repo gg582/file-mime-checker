@@ -1,2 +1,4 @@
 com/springlesson/filemimechecker/FileMimeCheckerApplicationTests.class
 com/springlesson/filemimechecker/core/FileMimeCoreTest.class
+com/springlesson/filemimechecker/core/strategy/TikaMimeDetectionStrategyTest.class
+com/springlesson/filemimechecker/core/model/MimeDetectionResultTest.class

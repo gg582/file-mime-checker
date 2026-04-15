@@ -14,10 +14,10 @@ import org.apache.tika.Tika;
      */
     @Override
     public String detect(byte[] data) {
-<span class="nc bnc" id="L17" title="All 4 branches missed.">        if (data == null || data.length == 0) {</span>
-<span class="nc" id="L18">            return &quot;application/octet-stream&quot;; // 데이터가 없을 경우의 기본값</span>
+<span class="fc bfc" id="L17" title="All 4 branches covered.">        if (data == null || data.length == 0) {</span>
+<span class="fc" id="L18">            return &quot;application/octet-stream&quot;; // 데이터가 없을 경우의 기본값</span>
         }
-<span class="nc" id="L20">        return tika.detect(data);</span>
+<span class="fc" id="L20">        return tika.detect(data);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>
