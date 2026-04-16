@@ -1,8 +1,0 @@
-com/springlesson/filemimechecker/core/FileMimeCore.class
-com/springlesson/filemimechecker/core/model/MimeDetectionResult.class
-com/springlesson/filemimechecker/web/FileMimeController.class
-com/springlesson/filemimechecker/core/model/MimeDetectionResult$Builder.class
-com/springlesson/filemimechecker/FileMimeCheckerApplication.class
-com/springlesson/filemimechecker/cli/CLIFileMimeController.class
-com/springlesson/filemimechecker/core/strategy/TikaMimeDetectionStrategy.class
-com/springlesson/filemimechecker/core/strategy/MimeDetectionStrategy.class

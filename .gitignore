@@ -40,3 +40,6 @@ desktop.ini
 
 # Project specific
 uploads/
+.vim/
+*.xlsx
+project_uml.png
