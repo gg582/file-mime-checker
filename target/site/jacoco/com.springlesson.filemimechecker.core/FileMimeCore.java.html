@@ -21,7 +21,7 @@ public class FileMimeCore {
     private final MimeDetectionStrategy strategy;
 
     /**
-     * 기본 생성자. 기본 전략으로 Apache Tika(TikaMimeDetectionStrategy)를 사용합니다.
+     * 기본 생성자. 기본 전략으로 Apache Tika를 사용합니다.
      */
     public FileMimeCore() {
 <span class="fc" id="L27">        this(new TikaMimeDetectionStrategy());</span>
@@ -79,7 +79,7 @@ public class FileMimeCore {
         ZipEntry entry;
 <span class="fc" id="L80">        byte[] buffer = new byte[8192];</span>
 
-        // ZIP 파일 내부의 엔트리(파일)를 하나씩 읽어들임
+        // ZIP 파일 내부의 엔트리를 하나씩 읽어들임
 <span class="fc bfc" id="L83" title="All 2 branches covered.">        while ((entry = zis.getNextEntry()) != null) {</span>
             // 폴더는 무시
 <span class="pc bpc" id="L85" title="1 of 2 branches missed.">            if (entry.isDirectory()) {</span>

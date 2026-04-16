@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * MIME 탐지 결과를 담는 불변(Immutable) 객체입니다.
- * 빌더(Builder) 패턴을 적용하여 단일 파일 및 압축 파일 내부의 다중 파일 결과를 
+ * MIME 탐지 결과를 담는 불변 객체입니다.
+ * 빌더 패턴을 적용하여 단일 파일 및 압축 파일 내부의 다중 파일 결과를 
  * 안전하고 유연하게 조립할 수 있도록 설계되었습니다.
  */
 public class MimeDetectionResult {
