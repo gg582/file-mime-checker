@@ -4,7 +4,6 @@ target/
 *.jar
 *.war
 *.ear
-*.zip
 *.tar.gz
 *.rar
 *.log
@@ -42,4 +41,3 @@ desktop.ini
 uploads/
 .vim/
 *.xlsx
-project_uml.png
