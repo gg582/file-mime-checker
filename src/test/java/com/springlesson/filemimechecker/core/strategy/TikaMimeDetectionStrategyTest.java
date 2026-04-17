@@ -4,6 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TikaMimeDetectionStrategyTest {
@@ -44,5 +48,16 @@ public class TikaMimeDetectionStrategyTest {
         byte[] data = "%PDF-1.4".getBytes();
         String result = strategy.detect(data);
         assertEquals("application/pdf", result);
+    }
+
+    @Test
+    @DisplayName("ZIP 파일(Archive.zip) MIME 타입 탐지 검증")
+    public void testDetectWithZipFile() throws IOException {
+        byte[] zipData;
+        try (InputStream is = getClass().getResourceAsStream("/Archive.zip")) {
+            zipData = Objects.requireNonNull(is).readAllBytes();
+        }
+        String result = strategy.detect(zipData);
+        assertEquals("application/zip", result);
     }
 }
